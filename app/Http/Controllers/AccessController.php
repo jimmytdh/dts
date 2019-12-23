@@ -17,10 +17,15 @@ class AccessController extends Controller
     {
         $budget = Section::where('description','Budget Section')->first();
         $accounting = Section::where('description','Accounting Section')->first();
-        if(Auth::user()->section == $accounting->id) {
-            return 'accounting';
-        }else if(Auth::user()->section == $budget->id) {
-            return 'budget';
+        if($accounting){
+            if(Auth::user()->section == $accounting->id) {
+                return 'accounting';
+            }
+        }
+        if($budget){
+            if(Auth::user()->section == $budget->id) {
+                return 'budget';
+            }
         }
         return 'general';
     }

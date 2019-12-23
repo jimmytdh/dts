@@ -11,12 +11,12 @@ class FeedbackStatusSeeder extends Seeder
      */
     public function run()
     {
-        $stat = new FeedbackStatus();
-        $stat->action = "Fixed";
-        $stat->save();
-
-        $stat = new FeedbackStatus();
-        $stat->action = "Pending";
-        $stat->save();
+//        $stat = new FeedbackStatus();
+//        $stat->action = "Fixed";
+//        $stat->save();
+//
+//        $stat = new FeedbackStatus();
+//        $stat->action = "Pending";
+//        $stat->save();
     }
 }

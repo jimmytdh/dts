@@ -63,7 +63,7 @@ class AdminController extends Controller
         $user = User::find($request->input('id'));
         //GET
         if($request->isMethod('get')){
-            if(isset($user) and count($user) > 0) {
+            if(isset($user)) {
                 return view('users.edit')
                     ->with('user', $user)
                     ->with('section',Section::all())

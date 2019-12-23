@@ -173,7 +173,7 @@
 
 @endsection
 @section('plugin')
-    <script src="{{ asset('resources/plugin/iCheck/icheck.min.js') }}"></script>
+    <script src="{{ url('plugin/iCheck/icheck.min.js') }}"></script>
     <script>
         var $table = $('.table-type');
         var $fixedColumn = $table.clone().insertBefore($table).addClass('fixed-column');
@@ -255,7 +255,7 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('resources/plugin/iCheck/all.css') }}">
+    <link rel="stylesheet" href="{{ url('plugin/iCheck/all.css') }}">
     <style>
         .table-responsive>.fixed-column {
             position: absolute;
