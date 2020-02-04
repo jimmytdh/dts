@@ -32,6 +32,7 @@ Route::post('document/update','DocumentController@update');
 Route::get('document/create/{type}','DocumentController@formDocument');
 Route::post('document/create','DocumentController@createDocument');
 Route::get('document/viewPending','DocumentController@countPendingDocuments');
+Route::get('/document/delete/{route_no}','AdminController@deleteTracking');
 
 Route::match(['GET','POST'],'document/pending','DocumentController@allPendingDocuments');
 Route::post('document/pending/return','DocumentController@returnDocument');

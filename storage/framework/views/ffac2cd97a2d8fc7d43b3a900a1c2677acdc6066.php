@@ -2,32 +2,33 @@
     use App\Users;
     use App\Section;
 ?>
-@extends('layouts.app')
 
-@section('content')
 
-@if (count($errors) > 0)
+<?php $__env->startSection('content'); ?>
+
+<?php if(count($errors) > 0): ?>
 <div class="alert alert-danger">
     <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
+        <?php foreach($errors->all() as $error): ?>
+        <li><?php echo e($error); ?></li>
+        <?php endforeach; ?>
     </ul>
 </div>
-@endif
+<?php endif; ?>
 
 <div class="alert alert-jim" id="inputText">
     <h2 class="page-header">All Documents</h2>
-    <form class="form-inline" method="POST" action="{{ asset('document/list') }}" onsubmit="return searchDocument();" id="searchForm">
-        {{ csrf_field() }}
+    <form class="form-inline" method="POST" action="<?php echo e(asset('document/list')); ?>" onsubmit="return searchDocument();" id="searchForm">
+        <?php echo e(csrf_field()); ?>
+
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Quick Search" name="keyword" value="{{ Session::get('keywordAll') }}" autofocus>
+            <input type="text" class="form-control" placeholder="Quick Search" name="keyword" value="<?php echo e(Session::get('keywordAll')); ?>" autofocus>
             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> Search</button>
         </div>
     </form>
     <div class="clearfix"></div>
     <div class="page-divider"></div>
-    @if(count($documents))
+    <?php if(count($documents)): ?>
     <div class="table-responsive">
         <table class="table table-list table-hover table-striped">
             <thead>
@@ -41,14 +42,14 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($documents as $doc)
+            <?php foreach($documents as $doc): ?>
             <tr>
                 <td>
-                    <a href="#track" data-link="{{ asset('document/track/'.$doc->route_no) }}" data-route="{{ $doc->route_no }}" data-toggle="modal" class="btn btn-sm btn-success col-sm-12"><i class="fa fa-line-chart"></i></a>
-                    <a href="{{ url('document/delete/'.$doc->route_no) }}"  class="btn btn-sm btn-danger col-sm-12" onclick="return confirm('Are you sure you want to delete the entire history of this tracking?')"><i class="fa fa-trash"></i></a>
+                    <a href="#track" data-link="<?php echo e(asset('document/track/'.$doc->route_no)); ?>" data-route="<?php echo e($doc->route_no); ?>" data-toggle="modal" class="btn btn-sm btn-success col-sm-12"><i class="fa fa-line-chart"></i></a>
+                    <a href="<?php echo e(url('document/delete/'.$doc->route_no)); ?>"  class="btn btn-sm btn-danger col-sm-12" onclick="return confirm('Are you sure you want to delete the entire history of this tracking?')"><i class="fa fa-trash"></i></a>
                 </td>
-                <td><a class="title-info" data-route="{{ $doc->route_no }}" data-link="{{ asset('/document/info/'.$doc->route_no.'/'.$doc->doc_type) }}" href="#document_info" data-toggle="modal">{{ $doc->route_no }}</a></td>
-                <td>{{ date('M d, Y',strtotime($doc->prepared_date)) }}<br>{{ date('h:i:s A',strtotime($doc->prepared_date)) }}</td>
+                <td><a class="title-info" data-route="<?php echo e($doc->route_no); ?>" data-link="<?php echo e(asset('/document/info/'.$doc->route_no.'/'.$doc->doc_type)); ?>" href="#document_info" data-toggle="modal"><?php echo e($doc->route_no); ?></a></td>
+                <td><?php echo e(date('M d, Y',strtotime($doc->prepared_date))); ?><br><?php echo e(date('h:i:s A',strtotime($doc->prepared_date))); ?></td>
                 <td>
                     <?php
                         if($user = Users::find($doc->prepared_by)){
@@ -64,10 +65,12 @@
                             $section = 'No Section';
                         }
                     ?>
-                    {{ $firstname }}
-                    {{ $lastname }}
+                    <?php echo e($firstname); ?>
+
+                    <?php echo e($lastname); ?>
+
                     <br>
-                    <em>({{ $section }})</em>
+                    <em>(<?php echo e($section); ?>)</em>
                 </td>
                 <?php
                     $doc_type = '';
@@ -75,30 +78,33 @@
                         $doc_type = \App\Http\Controllers\DocumentController::docTypeName($doc->doc_type);
                     }
                 ?>
-                <td>{{ $doc_type }}</td>
+                <td><?php echo e($doc_type); ?></td>
                 <td>
-                    @if($doc->doc_type == 'PRR_S')
-                        {!! nl2br($doc->purpose) !!}
-                    @else
-                        {!! nl2br($doc->description) !!}
-                    @endif
+                    <?php if($doc->doc_type == 'PRR_S'): ?>
+                        <?php echo nl2br($doc->purpose); ?>
+
+                    <?php else: ?>
+                        <?php echo nl2br($doc->description); ?>
+
+                    <?php endif; ?>
                 </td>
             </tr>
-            @endforeach
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>
-    {{ $documents->links() }}
-    @else
+    <?php echo e($documents->links()); ?>
+
+    <?php else: ?>
     <div class="alert alert-danger">
         <strong><i class="fa fa-times fa-lg"></i> No documents found! </strong>
     </div>
-    @endif
+    <?php endif; ?>
 </div>
-@endsection
-@section('plugin')
-<script src="{{ asset('resources/plugin/daterangepicker/moment.min.js') }}"></script>
-<script src="{{ asset('resources/plugin/daterangepicker/daterangepicker.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('plugin'); ?>
+<script src="<?php echo e(asset('resources/plugin/daterangepicker/moment.min.js')); ?>"></script>
+<script src="<?php echo e(asset('resources/plugin/daterangepicker/daterangepicker.js')); ?>"></script>
 <script>
     function searchDocument(){
         $('.loading').show();
@@ -194,9 +200,11 @@
         console.log(values);
     }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('css')
-<link href="{{ asset('resources/plugin/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet">
-@endsection
+<?php $__env->startSection('css'); ?>
+<link href="<?php echo e(asset('resources/plugin/daterangepicker/daterangepicker-bs3.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

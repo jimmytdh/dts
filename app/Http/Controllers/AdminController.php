@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 use App\Designation;
 use App\Division;
+use App\Tracking_Details;
+use App\Tracking_Report;
 use Illuminate\Http\Request;
 use App\User;
 use App\Section;
@@ -203,5 +205,15 @@ class AdminController extends Controller
     public function searchDocuments(Request $request){
         Session::put('keywordAll',$request->keyword);
         return self::allDocuments();
+    }
+
+    public function deleteTracking($route)
+    {
+        Tracking_Details::where('route_no',$route)->delete();
+        Tracking::where('route_no',$route)->delete();
+        Tracking_Releasev2::where('route_no',$route)->delete();
+        Tracking_Report::where('route_no',$route)->delete();
+
+        return redirect()->back();
     }
 }
