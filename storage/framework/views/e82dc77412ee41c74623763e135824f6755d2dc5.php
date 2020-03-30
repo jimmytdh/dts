@@ -10,13 +10,11 @@
                 <table class="table table-list table-hover table-striped">
                     <thead>
                     <tr>
-                        <th>Option</th>
-                        <th>*</th>
+                        <th>Status</th>
                         <th>Name </th>
-                        <th>Designation</th>
                         <th>Section / Division</th>
-                        <th>Action</th>
                         <th>Date Created</th>
+                        <th>Content</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,34 +40,34 @@
                          ?>
 
                         <tr>
-                            <td><a href="#view" class="btn btn-success" data-id="<?php echo e($feedback->id); ?>" data-link="<?php echo e(asset('view-feedback')); ?>" class="title-info"><i class="fa fa-eye"></i> View</a></td>
-                            <th>
-                                <?php if($feedback->is_read == "0"): ?>
-                                    <strong><i class="fa fa-envelope" aria-hidden="true" style="color: #ff0000;"></i></strong>
+                            <td>
+                                <?php $action = \App\FeedbackStatus::where('id',$feedback->stat_id)->first(); ?>
+                                <?php if(isset($action) && $action->action=='Pending'): ?>
+                                    <a href="<?php echo e(url('/users/feedback/completed/'.$feedback->id)); ?>" class="btn btn-danger btn-sm btn-complete">
+                                        <i class="fa fa-check-circle"></i> <?php echo e($action->action); ?>
+
+                                    </a>
+                                <?php elseif(isset($action) && $action->action=='Completed'): ?>
+                                    <a href="<?php echo e(url('/users/feedback/deleted/'.$feedback->id)); ?>" class="btn btn-success btn-sm btn-complete">
+                                        <i class="fa fa-check-circle"></i> <?php echo e($action->action); ?>
+
+                                    </a>
                                 <?php else: ?>
-                                    <strong><i class="fa fa-check-square" aria-hidden="true" style="color:green;"></i></strong>
+                                    <a href="<?php echo e(url('/users/feedback/deleted/'.$feedback->id)); ?>" class="btn btn-success btn-sm btn-complete">
+                                        <i class="fa fa-check-circle"></i> No Action
+                                    </a>
                                 <?php endif; ?>
-                            </th>
-                            <td><strong class="text-bold"><?php echo e($name); ?></strong></td>
-                            <td><?php echo e($designation); ?></td>
+                            </td>
+                            <td><strong class="text-bold"><?php echo e($name); ?></strong><br><?php echo e($designation); ?></td>
                             <td>
                                 <?php echo e($section); ?><br>
                                 <em>(<?php echo e($division); ?>)</em>
                             </td>
                             <td>
-                                <?php
-                                    $action = \App\FeedbackStatus::where('id',$feedback->stat_id)->pluck('action')->first();
-                                    if(isset($action) and count($action) > 0) {
-                                       echo $action;
-                                    } else {
-                                        echo "No action";
-                                    }
-                                ?>
-                            </td>
-                            <td>
-                                <?php echo e($feedback->created_at); ?>
+                                <?php echo e(\Carbon\Carbon::parse($feedback->created_at)->format('M d, Y h:i A')); ?>
 
                             </td>
+                            <td><?php echo $feedback->message; ?></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
@@ -78,8 +76,8 @@
             <?php echo e($feedbacks->links()); ?>
 
         <?php else: ?>
-            <div class="alert alert-danger">
-                <strong><i class="fa fa-times fa-lg"></i>No users found.</strong>
+            <div class="alert alert-warning">
+                <strong><i class="fa fa-exclamation-triangle"></i> Wooh! No feedback.</strong>
             </div>
         <?php endif; ?>
     </div>

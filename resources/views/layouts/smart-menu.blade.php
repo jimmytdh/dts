@@ -21,7 +21,7 @@
             <ul>
                 <li><a href="{{ asset('/users')  }}"><i class="fa fa-users"></i>&nbsp;&nbsp; Users</a></li>
                 <li class="divider"></li>
-                <li><a href="{{ asset('/designation') }}"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Designation</a></li>
+                <li><a href="{{ asset('/designation') }}"><i class="fa fa-bag"></i>&nbsp;&nbsp; Designation</a></li>
                 <li><a href="{{ asset('/section') }}"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Section</a></li>
                 <li><a href="{{ asset('/division') }}"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Division</a></li>
                 <li class="divider"></li>

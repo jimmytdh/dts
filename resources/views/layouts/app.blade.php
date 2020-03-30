@@ -172,9 +172,9 @@ $pending = \App\Tracking_Details::select(
                         <ul class="dropdown-menu">
                             <li><a href="{{ asset('/users')  }}"><i class="fa fa-users"></i>&nbsp;&nbsp; Users</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ asset('/designation') }}"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Designation</a></li>
-                            <li><a href="{{ asset('/section') }}"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Section</a></li>
-                            <li><a href="{{ asset('/division') }}"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Division</a></li>
+                            <li><a href="{{ asset('/designation') }}"><i class="fa fa-user"></i>&nbsp;&nbsp; Designation</a></li>
+                            <li><a href="{{ asset('/section') }}"><i class="fa fa-table"></i>&nbsp;&nbsp; Section</a></li>
+                            <li><a href="{{ asset('/division') }}"><i class="fa fa-group"></i>&nbsp;&nbsp; Division</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ asset('document/filter') }}"><i class="fa fa-filter"></i>&nbsp;&nbsp; Filter Documents</a></li>
                             <li><a href="{{ asset('users/feedback') }}"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp; User Feedbacks <span class="badge">{{ \App\Feedback::where('is_read','0')->count() }}</span></a></li>
@@ -183,7 +183,7 @@ $pending = \App\Tracking_Details::select(
                 @endif
                 @if(Auth::user()->user_priv==0)
                 <li>
-                    <a href="javascript:void(0)" data-link="{{ asset('feedback') }}" id="feedback" title="Write a feedback" data-trigger="focus" data-container="body"  data-placement="top" data-content="Help us improve our system by just sending feedback.">
+                    <a href="javascript:void(0)" data-link="{{ asset('/users/feedback/form') }}" id="feedback" title="Write a feedback" data-trigger="focus" data-container="body"  data-placement="top" data-content="Help us improve our system by just sending feedback.">
                         <i class="fa fa-sign-out"></i> Feedback
                     </a>
                 </li>

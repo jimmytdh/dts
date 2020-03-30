@@ -173,9 +173,9 @@ $pending = \App\Tracking_Details::select(
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo e(asset('/users')); ?>"><i class="fa fa-users"></i>&nbsp;&nbsp; Users</a></li>
                             <li class="divider"></li>
-                            <li><a href="<?php echo e(asset('/designation')); ?>"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Designation</a></li>
-                            <li><a href="<?php echo e(asset('/section')); ?>"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Section</a></li>
-                            <li><a href="<?php echo e(asset('/division')); ?>"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Division</a></li>
+                            <li><a href="<?php echo e(asset('/designation')); ?>"><i class="fa fa-user"></i>&nbsp;&nbsp; Designation</a></li>
+                            <li><a href="<?php echo e(asset('/section')); ?>"><i class="fa fa-table"></i>&nbsp;&nbsp; Section</a></li>
+                            <li><a href="<?php echo e(asset('/division')); ?>"><i class="fa fa-group"></i>&nbsp;&nbsp; Division</a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo e(asset('document/filter')); ?>"><i class="fa fa-filter"></i>&nbsp;&nbsp; Filter Documents</a></li>
                             <li><a href="<?php echo e(asset('users/feedback')); ?>"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp; User Feedbacks <span class="badge"><?php echo e(\App\Feedback::where('is_read','0')->count()); ?></span></a></li>
@@ -184,7 +184,7 @@ $pending = \App\Tracking_Details::select(
                 <?php endif; ?>
                 <?php if(Auth::user()->user_priv==0): ?>
                 <li>
-                    <a href="javascript:void(0)" data-link="<?php echo e(asset('feedback')); ?>" id="feedback" title="Write a feedback" data-trigger="focus" data-container="body"  data-placement="top" data-content="Help us improve our system by just sending feedback.">
+                    <a href="javascript:void(0)" data-link="<?php echo e(asset('/users/feedback/form')); ?>" id="feedback" title="Write a feedback" data-trigger="focus" data-container="body"  data-placement="top" data-content="Help us improve our system by just sending feedback.">
                         <i class="fa fa-sign-out"></i> Feedback
                     </a>
                 </li>

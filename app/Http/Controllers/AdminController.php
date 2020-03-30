@@ -11,6 +11,7 @@ use App\Designation;
 use App\Division;
 use App\Tracking_Details;
 use App\Tracking_Report;
+use App\UserTemp;
 use Illuminate\Http\Request;
 use App\User;
 use App\Section;
@@ -28,9 +29,12 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     public function users(Request $request) {
-        $users = User::where('id','!=', $request->user()->id)->paginate(10);
-        return view('users.users')
-                ->with('users',$users);
+        $users = User::where('id','!=', $request->user()->id)->orderBy('lname','asc')->paginate(15);
+        $temp = UserTemp::count();
+        return view('users.users',[
+            'users' => $users,
+            'temp' => $temp
+        ]);
     }
     public function user_create(Request $request){
 
@@ -119,12 +123,27 @@ class AdminController extends Controller
         }
         return view('users.users')->with('users', $user);
     }
-    public function remove(Request $request){
-        $user = User::find($request->input('id'));
-        if(isset($user) and count($user) > 0){
-            $user->delete();
-            return json_encode(array('status' => 'ok'));
-        }
+    public function remove($id){
+//        $user = User::find($request->input('id'));
+//        if(isset($user) and count($user) > 0){
+//            $user->delete();
+//            return json_encode(array('status' => 'ok'));
+//        }
+        $req = User::find($id);
+        $data = array(
+            'fname' => strtoupper($req->fname),
+            'mname' => strtoupper($req->mname),
+            'lname' => strtoupper($req->lname),
+            'designation' => $req->designation,
+            'division' => $req->division,
+            'section' => $req->section,
+            'username' => $req->username,
+            'password' => $req->password,
+            'user_id' => $req->id
+        );
+        UserTemp::create($data);
+        $req->delete();
+        return redirect('/users')->with('status','deleted');
     }
     public function check_user(Request $request)
     {

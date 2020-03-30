@@ -29,8 +29,10 @@
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Quick Search" name="keyword" value="<?php echo e(Session::get('keyword')); ?>" autofocus>
             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> Search</button>
-
-            <div class="btn-group">
+            <button type="button" class="btn btn-success general_form" data-target="#general_form" data-backdrop="static" data-toggle="modal" data-type="GENERAL">
+                <i class="fa fa-folder-open"></i> Add Document
+            </button>
+            <div class="btn-group hide">
                 <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-plus"></i>  Add New
                     <span class="caret"></span>
@@ -156,8 +158,8 @@
     <?php echo e($documents->links()); ?>
 
     <?php else: ?>
-        <div class="alert alert-danger">
-            <strong><i class="fa fa-times fa-lg"></i> No documents found! </strong>
+        <div class="alert alert-warning">
+            <strong><i class="fa fa-exclamation-triangle"></i> No documents found! </strong>
         </div>
     <?php endif; ?>
 </div>
@@ -220,6 +222,19 @@
                 }
             });
         },1000);
+    });
+    $('.general_form').on('click',function(){
+        var title = $(this).html();
+        var type = $(this).data('type');
+        <?php echo 'var url ="'.asset('document/create/').'";';?>
+        $('#general_form_title').html(title);
+        $.ajax({
+            url:url+'/'+type,
+            type: 'GET',
+            success: function(data){
+                $('#general_form_content').html(data);
+            }
+        })
     });
 
     $('a[href="#general_form"]').on('click',function(){
