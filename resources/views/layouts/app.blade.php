@@ -91,17 +91,17 @@ $pending = \App\Tracking_Details::select(
 
 <nav class="navbar navbar-default navbar-static-top">
     <div class="header" style="background-color:#0a0d27;padding:10px;">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-12">
             <span class="title-info">Welcome,</span> <span class="title-desc">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</span>
         </div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 col-sm-12">
             <span class="title-info">Section:</span>
             <span class="title-desc">
                 <?php $section = Section::find(Auth::user()->section) ? Section::find(Auth::user()->section)->description: 'No Section'; ?>
                 {{ $section }}
             </span>
         </div>
-        <div class="col-md-4 text-right">
+        <div class="col-md-4 col-sm-12">
             <span class="title-info">Date:</span> <span class="title-desc">{{ date('M d, Y') }}</span>
         </div>
         <div class="clearfix"></div>

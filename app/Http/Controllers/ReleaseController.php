@@ -110,7 +110,7 @@ class ReleaseController extends Controller
         //end rusel
 
         $status='reportCancelled';
-        return $status;
+        return redirect()->back()->with('status',$status);
     }
 
     static function getSections($id){

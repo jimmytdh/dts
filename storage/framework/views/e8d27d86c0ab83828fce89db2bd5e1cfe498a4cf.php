@@ -12,11 +12,13 @@ use App\Http\Controllers\DocumentController as document;
             font-size: 8pt;
         }
     </style>
-    <div class="alert alert-warning">
-        <div class="text-warning">
-            <i class="fa fa-warning"></i> Documents that not accepted within 30 minutes will be reported
-        </div>
-    </div>
+<?php /*    <div class="alert alert-warning">*/ ?>
+<?php /*        <div class="text-warning">*/ ?>
+<?php /*            <i class="fa fa-warning"></i> Documents that not accepted within 30 minutes will be reported*/ ?>
+<?php /*        </div>*/ ?>
+<?php /*    </div>*/ ?>
+<?php /*    */ ?>
+    <div class="table-responsive">
     <table class="table table-hover table-striped">
         <thead>
         <tr>
@@ -60,7 +62,7 @@ use App\Http\Controllers\DocumentController as document;
                     $data['released_date'][] = date('M d, Y', strtotime($released->released_date));
                     $data['released_time'][] = date('h:i A', strtotime($released->released_date));
                     $data['released_remarks'][] = $released->remarks;
-                    if($released->status == 'report' || ($released->status == "waiting" && document::checkMinutes($released->released_date) > 30 ) ){
+                    if($released->status == 'report' && document::checkMinutes($released->released_date) > 30 ){
                         $data['released_status'][] = "<small class='text-danger'><i class='fa fa-thumbs-down'></i> (Reported)</small>";
                         $data['released_alert'][] = "alert alert-danger";
                     } elseif($released->status == 'accept') {
@@ -201,6 +203,7 @@ use App\Http\Controllers\DocumentController as document;
         <?php endfor; ?>
         </tbody>
     </table>
+    </div>
 <?php else: ?>
     <div class="alert alert-danger">
         <i class="fa fa-times"></i> No tracking history!
