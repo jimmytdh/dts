@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b8cbfcd3-2119-4b6b-8308-a1f0848cbc80" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DocumentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DocumentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReleaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReleaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/document/logs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/document/logs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/document/track.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/document/track.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/11b8fb878b9b906f9996e029cad52cf2002707ae.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/11b8fb878b9b906f9996e029cad52cf2002707ae.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/4fb219bf89c71438281d54e810b9863797d8a60a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/4fb219bf89c71438281d54e810b9863797d8a60a.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/e8d27d86c0ab83828fce89db2bd5e1cfe498a4cf.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/e8d27d86c0ab83828fce89db2bd5e1cfe498a4cf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

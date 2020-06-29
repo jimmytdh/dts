@@ -11,6 +11,7 @@ use App\Designation;
 use App\Division;
 use App\Tracking_Details;
 use App\Tracking_Report;
+use App\Users;
 use App\UserTemp;
 use Illuminate\Http\Request;
 use App\User;
@@ -29,7 +30,7 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     public function users(Request $request) {
-        $users = User::where('id','!=', $request->user()->id)->orderBy('lname','asc')->paginate(15);
+        $users = Users::where('id','!=', $request->user()->id)->orderBy('lname','asc')->paginate(15);
         $temp = UserTemp::count();
         return view('users.users',[
             'users' => $users,
