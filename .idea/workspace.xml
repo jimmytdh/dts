@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b8cbfcd3-2119-4b6b-8308-a1f0848cbc80" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Designation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Designation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Division.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Division.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Section.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Section.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,10 +113,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../tdh/csr" />
-    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
@@ -182,6 +180,7 @@
       <workItem from="1586936106555" duration="12000" />
       <workItem from="1586992060666" duration="1442000" />
       <workItem from="1588745368552" duration="263000" />
+      <workItem from="1593398864460" duration="412000" />
     </task>
     <servers />
   </component>
@@ -233,5 +232,9 @@
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1536.824/1920.0.1360.728@0.0.1536.824" timestamp="1585573999005" />
     <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1585537141171" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1593398874533">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1593398874533" />
   </component>
 </project>
