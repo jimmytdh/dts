@@ -49,8 +49,9 @@ $code = Session::get('doc_type_code');
                     </div>
                     <input type="text" class="form-control" id="reservation" name="daterange" value="<?php echo e(isset($daterange) ? $daterange: null); ?>" placeholder="Input date range here..." required>
                 </div>
-                <div class="input-group">
-                    <select data-placeholder="Select Document Type" name="doc_type" class="chosen-select-static" tabindex="5" required>
+                <div class="input-group hidden">
+
+                    <select data-placeholder="Select Document Type" name="doc_type" class="chosen-select-static" tabindex="5">
                         <option value=""></option>
                         <option value="ALL" <?php if($code=='ALL') echo 'selected';?>>All Documents</option>
                         <optgroup label="Disbursement Voucher">
@@ -126,6 +127,7 @@ $code = Session::get('doc_type_code');
             <i class="fa fa-warning"></i> Please select Document Type!
         </div>
         <?php if(count($documents)): ?>
+            <div class="table-responsive">
             <table class="table table-list table-hover table-striped">
                 <thead>
                 <tr>
@@ -205,7 +207,7 @@ $code = Session::get('doc_type_code');
                                     echo Section::find($section_id)->description;
                                 ?>
                                 <br />
-                                    <button data-toggle="modal" data-target="#releaseTo" data-id="<?php echo e($out->id); ?>" data-route_no="<?php echo e($out->route_no); ?>" onclick="changeRoute($(this), '<?php echo $out->id ?>')" type="button" class="btn btn-info btn-xs"><i class="fa fa-send"></i> Change</button>
+                                    <button data-toggle="modal" data-target="#releaseTo" data-id="<?php echo e($out->id); ?>" data-route_no="<?php echo e($out->route_no); ?>" onclick="changeRoute($(this), '<?php echo $out->id ?>')" type="button" class="btn btn-info btn-xs hide"><i class="fa fa-send"></i> Change</button>
                                 <a href="<?php echo e(asset('document/report/'.$out->id .'/cancel')); ?>" class="btn btn-xs btn-danger"><i class="fa fa-times"></i> Cancel</a>
                             <?php else: ?>
                                 <?php $user = Users::find($out->received_by);?>
@@ -253,6 +255,7 @@ $code = Session::get('doc_type_code');
                 <?php endforeach; ?>
                 </tbody>
             </table>
+            </div>
             <?php echo e($documents->links()); ?>
 
         <?php else: ?>
@@ -268,7 +271,6 @@ $code = Session::get('doc_type_code');
     <?php $__env->startSection('plugin'); ?>
 
     <script>
-        console.log("rusel");
         $('.filter-division').show();
         $('#reservation').daterangepicker();
         $('.filter-division').on('change',function(){
@@ -297,18 +299,12 @@ $code = Session::get('doc_type_code');
             checkDestinationForm();
         });
 
-        function putRoute(form)
-        {
-            var route_no = form.data('route_no');
-            $('#route_no').val(route_no);
-            $('#op').val(0);
-        }
-
         function changeRoute(form,id)
         {
             var route_no = form.data('route_no');
             $('#route_no').val(route_no);
-            $('#op').val(id);
+            $('#op').val(0);
+            $('#currentID').val(form.data('id'));
         }
         function checkDestinationForm(){
             var division = $('.filter-division').val();
@@ -325,12 +321,12 @@ $code = Session::get('doc_type_code');
                 $('.filter_section').siblings('.chosen-container').css({border:'none'});
             }
         }
-        function checkDocTye(){
-            var doc = $('select[name="doc_type"]').val();
-            if(doc.length == 0){
-                $('.error').removeClass('hide');
-            }
-        }
+        // function checkDocTye(){
+        //     var doc = $('select[name="doc_type"]').val();
+        //     if(doc.length == 0){
+        //         $('.error').removeClass('hide');
+        //     }
+        // }
         function searchDocument(){
             $('.loading').show();
             setTimeout(function(){

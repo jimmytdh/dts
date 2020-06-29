@@ -37,7 +37,7 @@
                 <td>:</td>
                 <td>
                     <div id="headBorder">
-                    <select name="head" id="head" class="chosen-select" required>
+                    <select name="head" id="head" class="chosen-select">
                         <option value="">Select Head</option>
                         <?php foreach($user as $head): ?>
                             <option value="<?php echo e($head['id']); ?>"><?php echo e($head['fname'].' '.$head['mname'].' '.$head['lname']); ?></option>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>DOHRO7 DTS | Log in</title>
+    <title>CSMed DTS | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -43,7 +43,7 @@
             <img src="{{ asset('/img/logo-white.png') }}" width="80px" />
         </div>
         <div class="title">
-            <font class="region">Talisa District Hospital</font><br>
+            <font class="region">Cebu South Medical Center</font><br>
             <font class="sub">Document Tracking System</font>
         </div>
       <form role="form" method="POST" action="{{ url('/login') }}">
@@ -75,16 +75,16 @@
                 @endif
               </div>
                 <div class="row">
-                    <div class="col-xs-8">
-                        <div class="form-group">
-                            <label style="cursor:pointer;">
-                                <input type="checkbox" name="remember"> Remember Me
-                            </label>
-                        </div>
-                    </div><!-- /.col -->
-                    <div class="col-xs-4">
+                    <div class="col-xs-12">
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                     </div><!-- /.col -->
+                    <br>
+                    <br>
+                    <div class="col-xs-12">
+                        Don't have account? <a href="{{ url('register') }}">Register Now!</a>
+                    </div>
+
+                    <div class="clearfix"></div>
                 </div> 
             </div><!-- /.login-box-body -->
             

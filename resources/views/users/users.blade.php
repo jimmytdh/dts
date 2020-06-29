@@ -11,10 +11,13 @@
                 <input type="text" name="search" class="form-control" placeholder="Quick Search" autofocus>
                 <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> Search</button>
                 <div class="btn-group">
-                    <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" data-link="{{ asset('user/new') }}" href="#new">
-                        <i class="fa fa-plus"></i>  Add New
+                    <a class="btn btn-success" data-link="{{ asset('user/new') }}" href="#new">
+                        <i class="fa fa-user-plus"></i> Add New
                     </a>
                 </div>
+                <a class="btn btn-warning" href="{{ url('users/pending') }}">
+                    <span class="badge">{{ $temp }}</span> Pending
+                </a>
             </div>
         </form>
         <div class="clearfix"></div>
@@ -22,6 +25,11 @@
         @if(Session::has('used'))
             <div class="alert alert-danger">
                 <strong>{{ Session::get('used') }}</strong>
+            </div>
+        @endif
+        @if(session('status')=='deleted')
+            <div class="alert alert-success">
+                <i class="fa fa-check-circle"></i> Account successfully deactivated and it is now in the pending list.
             </div>
         @endif
         @if(count($users) > 0)
@@ -32,8 +40,9 @@
                         <th>Username</th>
                         <th>Name </th>
                         <th>Designation</th>
-                        <th>Section / Division</th>
-                        <th width="20%">Option</th>
+                        <th>Section</th>
+                        <th>Division</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,17 +55,10 @@
                             <td><a href="#user" data-id="{{ $user->id }}" data-link="{{ asset('user/edit') }}" class="title-info">{{ $user->username }}</a></td>
                             <td><a href="#user" data-id="{{ $user->id }}" data-link="{{ asset('user/edit') }}" class="text-bold">{{ $user->fname ." ". $user->mname." ".$user->lname }}</a></td>
                             <td>{{ $designation }}</td>
+                            <td>{{ $section }}</td>
+                            <td>{{ $division }}</td>
                             <td>
-                                {{ $section }}<br>
-                                <em>({{ $division }})</em>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="#user" class="btn btn-sm btn-info" data-toggle="modal" data-link="{{ asset('user/edit') }}" data-id="{{ $user->id }}">
-                                        <i class="fa fa-pencil"></i>  Update
-                                    </a>
-                                </div>
-                                <button type="button" data-id="{{ $user->id }}" data-link="{{ asset('user/remove') }}" class="btn btn-danger" id="delete_user" onclick="del_user(this);" name="delete" value="delete" ><i class="fa fa-trash"></i> Delete</button>
+                                <button type="button" class="btn btn-danger btn-xs delete_user" data-link="{{ url('user/remove/'.$user->id) }}"><i class="fa fa-user-times"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -65,8 +67,8 @@
             </div>
             {{ $users->links() }}
         @else
-            <div class="alert alert-danger">
-                <strong><i class="fa fa-times fa-lg"></i>No users found.</strong>
+            <div class="alert alert-warning">
+                <strong><i class="fa fa-exclamation-triangle"></i> No users found.</strong>
             </div>
         @endif
     </div>
@@ -89,6 +91,14 @@
             });
         })($);
 
+        $(document).ready(function(){
+            $(".delete_user").on('click',function(){
+                var url = $(this).data('link');
+                var c = confirm('Are you sure you want deactivate this account?');
+                if(c==true)
+                    window.location = url;
+            });
+        });
     </script>
 @endsection
 

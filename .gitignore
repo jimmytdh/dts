@@ -5,3 +5,8 @@ Homestead.yaml
 Homestead.json
 /nbproject/private/
 /storage/framework/views/*
+.env
+.htaccess
+index.php
+server.php
+robots.txt

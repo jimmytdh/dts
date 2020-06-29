@@ -91,17 +91,17 @@ $pending = \App\Tracking_Details::select(
 
 <nav class="navbar navbar-default navbar-static-top">
     <div class="header" style="background-color:#0a0d27;padding:10px;">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-12">
             <span class="title-info">Welcome,</span> <span class="title-desc">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</span>
         </div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 col-sm-12">
             <span class="title-info">Section:</span>
             <span class="title-desc">
                 <?php $section = Section::find(Auth::user()->section) ? Section::find(Auth::user()->section)->description: 'No Section'; ?>
                 {{ $section }}
             </span>
         </div>
-        <div class="col-md-4 text-right">
+        <div class="col-md-4 col-sm-12">
             <span class="title-info">Date:</span> <span class="title-desc">{{ date('M d, Y') }}</span>
         </div>
         <div class="clearfix"></div>
@@ -172,9 +172,9 @@ $pending = \App\Tracking_Details::select(
                         <ul class="dropdown-menu">
                             <li><a href="{{ asset('/users')  }}"><i class="fa fa-users"></i>&nbsp;&nbsp; Users</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ asset('/designation') }}"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Designation</a></li>
-                            <li><a href="{{ asset('/section') }}"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Section</a></li>
-                            <li><a href="{{ asset('/division') }}"><i class="fa fa-arrow-right"></i>&nbsp;&nbsp; Division</a></li>
+                            <li><a href="{{ asset('/designation') }}"><i class="fa fa-user"></i>&nbsp;&nbsp; Designation</a></li>
+                            <li><a href="{{ asset('/section') }}"><i class="fa fa-table"></i>&nbsp;&nbsp; Section</a></li>
+                            <li><a href="{{ asset('/division') }}"><i class="fa fa-group"></i>&nbsp;&nbsp; Division</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ asset('document/filter') }}"><i class="fa fa-filter"></i>&nbsp;&nbsp; Filter Documents</a></li>
                             <li><a href="{{ asset('users/feedback') }}"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp; User Feedbacks <span class="badge">{{ \App\Feedback::where('is_read','0')->count() }}</span></a></li>
@@ -183,7 +183,7 @@ $pending = \App\Tracking_Details::select(
                 @endif
                 @if(Auth::user()->user_priv==0)
                 <li>
-                    <a href="javascript:void(0)" data-link="{{ asset('feedback') }}" id="feedback" title="Write a feedback" data-trigger="focus" data-container="body"  data-placement="top" data-content="Help us improve our system by just sending feedback.">
+                    <a href="javascript:void(0)" data-link="{{ asset('/users/feedback/form') }}" id="feedback" title="Write a feedback" data-trigger="focus" data-container="body"  data-placement="top" data-content="Help us improve our system by just sending feedback.">
                         <i class="fa fa-sign-out"></i> Feedback
                     </a>
                 </li>
@@ -399,7 +399,15 @@ $incoming = Tracking_Details::select(
         });
     }
 </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162111471-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'UA-162111471-1');
+</script>
 @section('js')
 
 @show

@@ -36,7 +36,7 @@
                 <td>:</td>
                 <td>
                     <div id="headBorder">
-                    <select name="head" id="head" class="chosen-select" required>
+                    <select name="head" id="head" class="chosen-select">
                         <option value="">Select Head</option>
                         @foreach($user as $head)
                             <option value="{{ $head['id'] }}">{{ $head['fname'].' '.$head['mname'].' '.$head['lname'] }}</option>

@@ -5,6 +5,9 @@ Route::auth();
 
 //jimzky
 Route::get('/','HomeController@index');
+Route::get('/register','RegisterController@register');
+Route::post('/register','RegisterController@save');
+Route::get('/register/sections/{id}','RegisterController@sections');
 
 Route::get('home', 'HomeController@index');
 Route::get('home/chart', 'HomeController@chart');
@@ -246,8 +249,13 @@ Route::match(['get','post'],'user/new','AdminController@user_create');
 Route::match(['get','post'],'user/edit','AdminController@user_edit');
 Route::get('/get/section', 'AdminController@section');
 Route::get('/search/user','AdminController@search');
-Route::post('/user/remove','AdminController@remove');
+Route::get('/user/remove/{id}','AdminController@remove');
 Route::get('/check/user','AdminController@check_user');
+
+Route::get('/users/pending','UserController@pending');
+Route::get('/users/pending/remove/{id}','UserController@removePending');
+Route::post('/users/pending/search','UserController@searchPending');
+Route::get('/users/activate/{id}','UserController@activate');
 //designation
 Route::get('/designation', 'DesignationController@index');
 Route::match(['get','post'],'/designation/create','DesignationController@create');
@@ -256,12 +264,11 @@ Route::get('/search/designation', 'DesignationController@search');
 Route::post('/remove/designation', 'DesignationController@remove');
 //feedback
 Route::post("sendFeedback","Feedback1Controller@sendFeedback");
-Route::match(['get','post'] ,'feedback', 'FeedbackController@index');
-Route::match(['get','post'], 'users/feedback', 'FeedbackController@view_feedback');
-Route::match(['get','post'],'view-feedback','FeedbackController@message');
-Route::get('feedback_ok',function(){
-    return view('feedback.feedback_ok');
-});
+Route::get('/users/feedback', 'FeedbackController@index')->middleware('user_priv');
+Route::post('/users/feedback', 'FeedbackController@sendFeedback');
+Route::get('/users/feedback/form', 'FeedbackController@form');
+Route::get('/users/feedback/completed/{id}', 'FeedbackController@completed');
+Route::get('/users/feedback/deleted/{id}', 'FeedbackController@deleted');
 Route::post('feedback/action', 'FeedbackController@action');
 Route::get('clear', function(){
     Session::flush();

@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FeedbackController extends Controller
 {
@@ -19,23 +20,24 @@ class FeedbackController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $name = $request->user()->fname." ".$request->user()->mname." ".$request->user()->lname;
-        if($request->isMethod('get')) {
-            return view('feedback.feedback')->with('name',$name);
-        }
-        if($request->isMethod('post')){
-            $feedback = new Feedback();
-            $feedback->userid = $request->user()->id;
-            $feedback->subject = $request->input('subject');
-            $feedback->telno = $request->input('telno');
-            $feedback->message = $request->input('message');
-            $feedback->stat_id = "-1";
-            $feedback->is_read = "0";
-            $feedback->save();
-            return redirect('feedback_ok')->with('name',$name);
-        }
+        return view('feedback.list',[
+            'feedbacks' => Feedback::orderBy('id','desc')->paginate(15)
+        ]);
+    }
+
+    public function sendFeedback(Request $request)
+    {
+        $feedback = new Feedback();
+        $feedback->userid = $request->user()->id;
+        $feedback->subject = $request->input('subject');
+        $feedback->telno = $request->input('telno');
+        $feedback->message = $request->input('message');
+        $feedback->stat_id = "1";
+        $feedback->is_read = "0";
+        $feedback->save();
+        return redirect()->back();
     }
     public function view_feedback(Request $request)
     {
@@ -59,5 +61,24 @@ class FeedbackController extends Controller
         $feedback->stat_id = $request->input('actionid');
         $feedback->save();
         return redirect('users/feedback');
+    }
+
+    function completed($id)
+    {
+        Feedback::find($id)->update(['stat_id'=>2]);
+        return redirect()->back();
+    }
+
+    function deleted($id)
+    {
+        Feedback::find($id)->delete();
+        return redirect()->back();
+    }
+
+    function form()
+    {
+        $user = Auth::user();
+        $name = "$user->fname $user->lname";
+        return view('feedback.feedback')->with('name',$name);
     }
 }

@@ -66,6 +66,20 @@ return [
             'engine' => null,
         ],
 
+        'tdh_user' => [
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'port' => '3306',
+            'database' => 'tdh_user',
+            'username' => 'root',
+            'password' => '@mysql1010',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),

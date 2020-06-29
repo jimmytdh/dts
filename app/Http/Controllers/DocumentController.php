@@ -999,7 +999,7 @@ class DocumentController extends Controller
     function searchLogs(Request $req)
     {
         $keyword = array(
-            'doc_type' => $req->doc_type,
+            'doc_type' => 'ALL',
             'str' => $req->daterange,
             'keywordLogs' => $req->keywordLogs
         );
