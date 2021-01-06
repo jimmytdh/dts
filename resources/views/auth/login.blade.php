@@ -39,8 +39,7 @@
     @endif
     <div class="login-box" style="margin:3% auto;">
         <div class="login-logo" style="margin-bottom: 10px;">
-            <img src="{{ asset('/img/doh.png') }}" width="78px" />
-            <img src="{{ asset('/img/logo-white.png') }}" width="80px" />
+            <img src="{{ asset('/img/doh_csmc.png') }}" />
         </div>
         <div class="title">
             <font class="region">Cebu South Medical Center</font><br>

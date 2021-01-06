@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8cbfcd3-2119-4b6b-8308-a1f0848cbc80" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dts.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +186,7 @@
       <workItem from="1588745368552" duration="263000" />
       <workItem from="1593398864460" duration="5670000" />
       <workItem from="1609138171510" duration="630000" />
+      <workItem from="1609912008776" duration="87000" />
     </task>
     <servers />
   </component>
