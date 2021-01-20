@@ -62,14 +62,14 @@
             <center>
                 <strong>Republic of the Philippines</strong><br>
                 DEPARTMENT OF HEALTH<br>
-                <strong>CENTRAL VISAYAS CENTER for HEALTH DEVELOPMENT</strong><br>
+                <strong>CEBU SOUTH MEDICAL CENTER</strong><br>
                 DOCUMENT TRACKING SYSTEM (DTS)
             </center>
         </td>
         <!--
             {{--<td width="20%"><?php echo DNS2D::getBarcodeHTML(Session::get('route_no'), "QRCODE",5,5); ?></td>--}}
         -->
-        <?php $image_path = '/img/f1.jpg'; ?>
+        <?php $image_path = '/img/logo.jpg'; ?>
         <td width="20%"><center><img src="{{ public_path() . $image_path }}" width="100"></center></td>
     </tr>
 
