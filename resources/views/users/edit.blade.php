@@ -48,7 +48,7 @@
                 <td class="col-sm-3"><label>Designation</label></td>
                 <td class="col-sm-1">:</td>
                 <td class="col-sm-8">
-                    <select name="designation" required id="select_dis" class="chosen-select form-control" data-link="{{ asset('/get/section') }}">
+                    <select name="designation" required id="select_dis" class="form-control" data-link="{{ asset('/get/section') }}">
                         <option value="" selected disabled>Select Designation</option>
                         @foreach($designation as $a)
                             <option {{ ($user->designation == $a->id ? 'selected' : '') }} value="{{ $a->id }}">{{ $a->description }}</option>
@@ -60,7 +60,7 @@
                 <td class="col-sm-3"><label>Division</label></td>
                 <td class="col-sm-1">:</td>
                 <td class="col-sm-8">
-                    <select name="division" required id="select_div" onchange="loadDivision(this);" class="chosen-select form-control" data-link="{{ asset('/get/section') }}">
+                    <select name="division" required id="select_div" onchange="loadDivision(this);" class="form-control" data-link="{{ asset('/get/section') }}">
                         <option value="" selected disabled>Select division</option>
                         @foreach($division as $d)
                             <option {{ ($user->division == $d->id ? 'selected' : '') }} value="{{ $d->id }}">{{ $d->description }}</option>
@@ -72,7 +72,7 @@
                 <td class="col-sm-3"><label>Section</label></td>
                 <td class="col-sm-1">:</td>
                 <td class="col-sm-8">
-                    <select name="section" required id="select_div" onchange="loadDivision(this);" class="chosen-select form-control" data-link="{{ asset('/get/section') }}">
+                    <select name="section" required id="select_div" onchange="loadDivision(this);" class="form-control" data-link="{{ asset('/get/section') }}">
                         <option value="" selected disabled>Select section</option>
                         @foreach($section as $d)
                             <option {{ ($user->section == $d->id ? 'selected' : '') }} value="{{ $d->id }}">{{ $d->description }}</option>

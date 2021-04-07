@@ -30,7 +30,15 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     public function users(Request $request) {
-        $users = Users::where('id','!=', $request->user()->id)->orderBy('lname','asc')->paginate(15);
+        $search = Session::get('search_user');
+        $users = Users::where('id','!=', $request->user()->id);
+        if($search){
+            $users = $users->where('fname','LIKE', "%$search%")
+                ->orWhere('mname', 'LIKE', "%$search%")
+                ->orWhere('lname', 'LIKE', "%$search%")
+                ->orWhere('username' ,'LIKE', "%$search%");
+        }
+        $users = $users->orderBy('lname','asc')->paginate(15);
         $temp = UserTemp::count();
         return view('users.users',[
             'users' => $users,
@@ -114,15 +122,8 @@ class AdminController extends Controller
     }
 
     public function search(Request $request) {
-        $user = User::where('fname','LIKE', "%". $request->input('search') ."%")
-                    ->orWhere('mname', 'LIKE', "%". $request->input('search')."%")
-                    ->orWhere('lname', 'LIKE', "%". $request->input('search'). "%")
-                    ->orWhere('username' ,'LIKE', "%". $request->input('search'). "%")
-                    ->paginate(10);
-        if(isset($user) and count($user) > 0) {
-            return view('users.users')->with('users',$user);
-        }
-        return view('users.users')->with('users', $user);
+        Session::put('search_user',$request->search);
+        return redirect()->back();
     }
     public function remove($id){
 //        $user = User::find($request->input('id'));

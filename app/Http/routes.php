@@ -248,7 +248,7 @@ Route::get('users', 'AdminController@users');
 Route::match(['get','post'],'user/new','AdminController@user_create');
 Route::match(['get','post'],'user/edit','AdminController@user_edit');
 Route::get('/get/section', 'AdminController@section');
-Route::get('/search/user','AdminController@search');
+Route::post('/search/user','AdminController@search');
 Route::get('/user/remove/{id}','AdminController@remove');
 Route::get('/check/user','AdminController@check_user');
 

@@ -5,10 +5,10 @@
     <span id="token" data-token="{{ csrf_token() }}"></span>
     <div class="alert alert-jim" id="inputText">
         <h2 class="page-header">System Users</h2>
-        <form class="form-inline form-accept" action="{{ asset('/search/user') }}" method="GET">
+        <form class="form-inline form-accept" action="{{ asset('/search/user') }}" method="POST">
             {{ csrf_field() }}
             <div class="form-group">
-                <input type="text" name="search" class="form-control" placeholder="Quick Search" autofocus>
+                <input type="text" value="{{ \Illuminate\Support\Facades\Session::get('search_user') }}" name="search" class="form-control" placeholder="Quick Search" autofocus>
                 <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> Search</button>
                 <div class="btn-group">
                     <a class="btn btn-success" data-link="{{ asset('user/new') }}" href="#new">
@@ -75,15 +75,15 @@
 
 @endsection
 @section('plugin')
-    <script src="{{ asset('resources/plugin/daterangepicker/moment.min.js') }}"></script>
-    <script src="{{ asset('resources/plugin/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('plugin/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('plugin/daterangepicker/daterangepicker.js') }}"></script>
 @endsection
 
 @section('css')
-    <link href="{{ asset('resources/plugin/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugin/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet">
 @endsection
 @section('js')
-    @@parent
+    @parent
     <script>
         (function($){
             $('.form-accept').submit(function(event){
