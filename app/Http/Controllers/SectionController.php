@@ -26,8 +26,8 @@ class SectionController extends Controller
     }
 
     public function searchSection(Request $request){
-        Session::put("search",$request->search);
-        return $this->searchSectionSave();
+        Session::put("searchSection",$request->section);
+        return redirect()->back();
     }
 
     public function searchSectionSave(){

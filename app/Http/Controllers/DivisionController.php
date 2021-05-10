@@ -60,6 +60,12 @@ class DivisionController extends Controller
         $user = Users::find($id);
         return $user['fname'].' '.$user['mname'].' '.$user['lname'];
     }
+
+    public static function getDivisionDesc($id)
+    {
+        return Division::find($id)->description;
+    }
+
     public function checkDivision(Request $request) {
         $section = Division::where('description',$request->input('description'))->first();
         if(isset($section) and count($section) > 0) {
