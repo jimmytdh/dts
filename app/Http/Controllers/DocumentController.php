@@ -923,13 +923,15 @@ class DocumentController extends Controller
         $keyword = Session::get('searchLogs');
         $doc_type = '';
         $keywordLogs = '';
+
+        $id = Auth::user()->id;
+
+        $str = Carbon::now()->startOfMonth()->format('Y-m-d H:i:is')." - ".Carbon::now()->endOfMonth()->format('Y-m-d H:i:is');
         if($keyword){
             $doc_type = $keyword['doc_type'];
             $keywordLogs = $keyword['keywordLogs'];
+            $str = $keyword['str'];
         }
-        $id = Auth::user()->id;
-
-        $str = $keyword['str'];
         $temp1 = explode('-',$str);
         $temp2 = array_slice($temp1, 0, 1);
         $tmp = implode(',', $temp2);
