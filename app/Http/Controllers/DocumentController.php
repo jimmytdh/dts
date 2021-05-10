@@ -926,7 +926,7 @@ class DocumentController extends Controller
 
         $id = Auth::user()->id;
 
-        $str = Carbon::now()->startOfMonth()->format('Y-m-d H:i:is')." - ".Carbon::now()->endOfMonth()->format('Y-m-d H:i:is');
+        $str = Carbon::now()->startOfMonth()->format('m/d/Y')." - ".Carbon::now()->endOfMonth()->format('m/d/Y');
         if($keyword){
             $doc_type = $keyword['doc_type'];
             $keywordLogs = $keyword['keywordLogs'];
@@ -1000,7 +1000,7 @@ class DocumentController extends Controller
             $logs['data'][] = $data->get();
         }
 
-        return view('document.logs',['documents' => $documents, 'doc_type' => $doc_type, 'daterange' => $keyword['str'],'keywordLogs' => $keywordLogs]);
+        return view('document.logs',['documents' => $documents, 'doc_type' => $doc_type, 'daterange' => $str,'keywordLogs' => $keywordLogs]);
     }
 
     function searchLogs(Request $req)
@@ -1020,7 +1020,7 @@ class DocumentController extends Controller
         $doc_type = '';
         $section = Auth::user()->section;
         $keywordSectionLogs = '';
-        $str = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s')." - ".Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
+        $str = Carbon::now()->startOfMonth()->format('m/d/Y')." - ".Carbon::now()->endOfMonth()->format('m/d/Y');
         if($keyword){
             $doc_type = $keyword['doc_type'];
             $keywordSectionLogs = $keyword['keywordSectionLogs'];
@@ -1077,7 +1077,7 @@ class DocumentController extends Controller
         }
         Session::put('logsDocument',$logs);
 
-        return view('document.sectionLogs',['documents' => $documents, 'doc_type' => $doc_type, 'daterange' => $keyword['str'],'keywordSectionLogs' => $keywordSectionLogs]);
+        return view('document.sectionLogs',['documents' => $documents, 'doc_type' => $doc_type, 'daterange' => $str,'keywordSectionLogs' => $keywordSectionLogs]);
     }
 
     function searchSectionLogs(Request $req)
