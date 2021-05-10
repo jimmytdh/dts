@@ -39,53 +39,7 @@ $code = Session::get('doc_type_code');
                     </div>
                     <input type="text" class="form-control" id="reservation" name="daterange" value="{{ isset($daterange) ? $daterange: null }}" placeholder="Input date range here..." required>
                 </div>
-                <div class="input-group">
-                    <select data-placeholder="Select Document Type" name="doc_type" class="chosen-select" tabindex="5" required>
-                        <option value=""></option>
-                        <option value="ALL" <?php if($code=='ALL') echo 'selected';?>>All Documents</option>
-                        <optgroup label="Disbursement Voucher">
-                            <option <?php if($code=='SAL') echo 'selected'; ?> value="SAL">Salary, Honoraria, Stipend, Remittances, CHT Mobilization</option>
-                            <option <?php if($code=='TEV') echo 'selected'; ?> value="TEV">TEV</option>
-                            <option <?php if($code=='BILLS') echo 'selected'; ?> value="BILLS">Bills, Cash Advance Replenishment, Grants/Fund Transfer</option>
-                            <option <?php if($code=='PAYMENT') echo 'selected'; ?> value="PAYMENT">Supplier (Payment of Transactions with PO)</option>
-                            <option <?php if($code=='INFRA') echo 'selected'; ?> value="INFRA">Infra - Contractor</option>
-                        </optgroup>
-                        <optgroup label="Letter/Mail/Communication">
-                            <option value="INCOMING">Incoming</option>
-                            <option>Outgoing</option>
-                            <option>Service Record</option>
-                            <option>SALN</option>
-                            <option>Plans (includes Allocation List)</option>
-                            <option value="ROUTE">Routing Slip</option>
-                        </optgroup>
-                        <optgroup label="Management System Documents">
-                            <option>Memorandum</option>
-                            <option>ISO Documents</option>
-                            <option>Appointment</option>
-                            <option>Resolutions</option>
-                        </optgroup>
-                        <optgroup label="Miscellaneous">
-                            <option value="WORKSHEET">Activity Worksheet</option>
-                            <option value="JUST_LETTER">Justification</option>
-                            <option>Certifications</option>
-                            <option>Certificate of Appearance</option>
-                            <option>Certificate of Employment</option>
-                            <option>Certificate of Clearance</option>
-                        </optgroup>
-                        <optgroup label="Personnel Related Documents">
-                            <option <?php if($code=='OFFICE_ORDER') echo 'selected'; ?> value="OFFICE_ORDER">Office Order</option>
-                            <option>DTR</option>
-                            <option <?php if($code=='APP_LEAVE') echo 'selected'; ?> value="APP_LEAVE">Application for Leave</option>
-                            <option>Certificate of Overtime Credit</option>
-                            <option>Compensatory Time Off</option>
-                        </optgroup>
-                        <option value="PO">Purchase Order</option>
-                        <option <?php if($code=='PRC') echo 'selected'; ?> value="PRC">Purchase Request - Cash Advance Purchase</option>
-                        <option <?php if($code=='PRR_S') echo 'selected'; ?> value="PRR_S">Purchase Request - Regular Purchase</option>
-                        <option>Reports</option>
-                        <option <?php if($code=='GENERAL') echo 'selected'; ?> value="GENERAL" selected>General Documents</option>
-                    </select>
-                </div>
+
                 <button type="submit" class="btn btn-success" onclick="checkDocTye()"><i class="fa fa-search"></i> Filter</button>
                 @if(count($documents))
                     {{--<a target="_blank" href="{{ asset('pdf/logs/'.$doc_type.'?type=section') }}" class="btn btn-warning"><i class="fa fa-print"></i> Print Logs</a>--}}
