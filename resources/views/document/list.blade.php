@@ -104,10 +104,10 @@
         <table class="table table-list table-hover table-striped">
             <thead>
                 <tr>
-                    <th width="8%"></th>
-                    <th width="20%">Route #</th>
-                    <th width="15%">Prepared Date</th>
-                    <th width="20%">Document Type</th>
+                    <th></th>
+                    <th>Route #</th>
+                    <th>Prepared Date</th>
+                    <th>Document Type</th>
                     <th>Remarks / Additional Information</th>
                 </tr>
             </thead>

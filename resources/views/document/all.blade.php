@@ -32,20 +32,20 @@
         <table class="table table-list table-hover table-striped">
             <thead>
             <tr>
-                <th width="8%"></th>
-                <th width="20%">Route #</th>
-                <th width="15%">Prepared Date</th>
-                <th width="15%">Prepared By</th>
-                <th width="20%">Document Type</th>
+                <th style="white-space: nowrap;"></th>
+                <th>Route #</th>
+                <th>Prepared Date</th>
+                <th>Prepared By</th>
+                <th>Document Type</th>
                 <th>Remarks</th>
             </tr>
             </thead>
             <tbody>
             @foreach($documents as $doc)
             <tr>
-                <td>
-                    <a href="#track" data-link="{{ asset('document/track/'.$doc->route_no) }}" data-route="{{ $doc->route_no }}" data-toggle="modal" class="btn btn-sm btn-success col-sm-12"><i class="fa fa-line-chart"></i></a>
-                    <a href="{{ url('document/delete/'.$doc->route_no) }}"  class="btn btn-sm btn-danger col-sm-12" onclick="return confirm('Are you sure you want to delete the entire history of this tracking?')"><i class="fa fa-trash"></i></a>
+                <td style="white-space: nowrap;">
+                    <a href="#track" data-link="{{ asset('document/track/'.$doc->route_no) }}" data-route="{{ $doc->route_no }}" data-toggle="modal" class="btn btn-sm btn-success"><i class="fa fa-line-chart"></i></a>
+                    <a href="{{ url('document/delete/'.$doc->route_no) }}"  class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete the entire history of this tracking?')"><i class="fa fa-trash"></i></a>
                 </td>
                 <td><a class="title-info" data-route="{{ $doc->route_no }}" data-link="{{ asset('/document/info/'.$doc->route_no.'/'.$doc->doc_type) }}" href="#document_info" data-toggle="modal">{{ $doc->route_no }}</a></td>
                 <td>{{ date('M d, Y',strtotime($doc->prepared_date)) }}<br>{{ date('h:i:s A',strtotime($doc->prepared_date)) }}</td>

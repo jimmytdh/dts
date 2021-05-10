@@ -83,7 +83,7 @@ $code = Session::get('doc_type_code');
                         <option <?php if($code=='PRC') echo 'selected'; ?> value="PRC">Purchase Request - Cash Advance Purchase</option>
                         <option <?php if($code=='PRR_S') echo 'selected'; ?> value="PRR_S">Purchase Request - Regular Purchase</option>
                         <option>Reports</option>
-                        <option <?php if($code=='GENERAL') echo 'selected'; ?> value="GENERAL">General Documents</option>
+                        <option <?php if($code=='GENERAL') echo 'selected'; ?> value="GENERAL" selected>General Documents</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-success" onclick="checkDocTye()"><i class="fa fa-search"></i> Filter</button>

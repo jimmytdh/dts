@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Section;
 use App\Tracking_Releasev2;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Tracking;
 use App\User;
@@ -920,8 +921,12 @@ class DocumentController extends Controller
     }
     function logsDocument(){
         $keyword = Session::get('searchLogs');
-        $doc_type = $keyword['doc_type'];
-        $keywordLogs = $keyword['keywordLogs'];
+        $doc_type = '';
+        $keywordLogs = '';
+        if($keyword){
+            $doc_type = $keyword['doc_type'];
+            $keywordLogs = $keyword['keywordLogs'];
+        }
         $id = Auth::user()->id;
 
         $str = $keyword['str'];
@@ -1010,10 +1015,15 @@ class DocumentController extends Controller
     function sectionLogs(){
 
         $keyword = Session::get('sectionLogs');
-        $doc_type = $keyword['doc_type'];
+        $doc_type = '';
         $section = Auth::user()->section;
-        $keywordSectionLogs = $keyword['keywordSectionLogs'];
-        $str = $keyword['str'];
+        $keywordSectionLogs = '';
+        $str = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s')." - ".Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
+        if($keyword){
+            $doc_type = $keyword['doc_type'];
+            $keywordSectionLogs = $keyword['keywordSectionLogs'];
+            $str = $keyword['str'];
+        }
         $temp1 = explode('-',$str);
         $temp2 = array_slice($temp1, 0, 1);
         $tmp = implode(',', $temp2);
