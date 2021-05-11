@@ -157,7 +157,7 @@ $code = Session::get('doc_type_code');
                             {{ $user->fname }}
                             {{ $user->lname }}
                             <br>
-                            <em>({{ Section::find($user->section)->description }})</em>
+                            <em>({{ ($sec = Section::find($user->section)) ? $sec->description:'' }})</em>
                             @else
 
                                 <?php
